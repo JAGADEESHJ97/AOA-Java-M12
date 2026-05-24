@@ -20,12 +20,51 @@ If it is not possible to reach the end, return -1.
 ```
 /*
 Program to implement Reverse a String
-Developed by: 
-Register Number:  
+Developed by: JAGADEESH J
+Register Number:  212223110015
 */
+
+import java.util.Scanner;
+
+public class MinJumpToEnd {
+
+    // Function to return minimum jumps to reach end
+    public static int minimumJumps(int[] nums) {
+        if(nums.length<=1) return 0;
+        if(nums[0]==0) return -1;
+        int jumps=0;
+        int currentEnd=0;
+        int farthest=0;
+        for(int i=0;i<nums.length-1;i++){
+            farthest=Math.max(farthest,i+nums[i]);
+            if(i==currentEnd){
+                jumps++;
+                currentEnd=farthest;
+            }
+            if(currentEnd>nums.length-1) break;
+            if(currentEnd==i) return -1;
+        }
+        return currentEnd>=nums.length-1?jumps:-1;
+    }
+
+    // Main method to handle input and output
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // Number of elements
+        int[] nums = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+
+        System.out.println("Minimum jumps to reach last index: " + minimumJumps(nums));
+    }
+}
+
 ```
 
 ## Output:
+<img width="998" height="313" alt="image" src="https://github.com/user-attachments/assets/52d6846f-7072-4bff-a435-29f30bb67ee9" />
 
 
 
